@@ -11,6 +11,14 @@ public class Empleado
     private String sexo;
     private int edad;
     
+    public Empleado( String nombre, String apellido, String correo, String sexo, int edad) {
+        
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.sexo = sexo;
+        this.edad = edad;
+    }
     public Empleado(int id_empleado, String nombre, String apellido, String correo, String sexo, int edad) {
         this.id_empleado = id_empleado;
         this.nombre = nombre;

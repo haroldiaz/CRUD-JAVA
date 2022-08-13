@@ -81,9 +81,23 @@ public class BaseDatos {
 
         return lista;
     }
-
+    
+    public boolean INSERT_EMPLEADO(Empleado nuevo)
+    {
+        
+        String sql = "INSERT INTO EMPLEADO(nombre,apellido,correo,sexo,edad)"
+                    + "\n" 
+                    + "VALUES ( "+ "'"+ nuevo.getNombre() +"','"+  
+                                        nuevo.getApellido() +"','"+
+                                        nuevo.getCorreo() +"','"+
+                                        nuevo.getSexo()+"','"+
+                                        nuevo.getEdad()
+                                        +"')";
+        return EJECUTE_QUERY(sql);
+        
+    }
    
-    public void EJECUTE_QUERY(String query) 
+    boolean EJECUTE_QUERY(String query) 
     {
         try 
         {
@@ -92,12 +106,18 @@ public class BaseDatos {
          
            
             System.out.println("--SE EJECUTO- CORRECTAMENTE-");
+            return  true;
+            
 
         } catch (SQLException e)
         {
             System.out.println("ERROR EJECUTE_QUERY -> " + e);
+            return  false;
+            
         }
-
+        
+        
+        
     }
 
 }

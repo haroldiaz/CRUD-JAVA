@@ -13,18 +13,18 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <JFXTextField fx:id="nombre_text" layoutX="118.0" layoutY="176.0" prefHeight="35.0" prefWidth="167.0" promptText="Nombre" />
-            <JFXButton buttonType="RAISED" layoutX="113.0" layoutY="412.0" prefHeight="38.0" prefWidth="177.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Registrar" />
+            <JFXButton buttonType="RAISED" layoutX="113.0" layoutY="412.0" onAction="#registrarEmpleado" prefHeight="38.0" prefWidth="177.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Registrar" />
             <JFXTextField fx:id="apellido_text" layoutX="118.0" layoutY="230.0" prefHeight="35.0" prefWidth="167.0" promptText="Apellido" />
             <JFXTextField fx:id="correo_text" layoutX="118.0" layoutY="284.0" prefHeight="35.0" prefWidth="167.0" promptText="Correo" />
-            <JFXComboBox fx:id="combo_edad" layoutX="359.0" layoutY="181.0" prefHeight="30.0" prefWidth="170.0" promptText="Sexo" />
-            <JFXTextField fx:id="edad_text" layoutX="359.0" layoutY="230.0" prefHeight="35.0" prefWidth="170.0" promptText="Apellido" text="Edad" />
+            <JFXComboBox fx:id="combo_sexo" layoutX="359.0" layoutY="181.0" prefHeight="30.0" prefWidth="170.0" promptText="Sexo" />
+            <JFXTextField fx:id="edad_text" layoutX="359.0" layoutY="230.0" prefHeight="35.0" prefWidth="170.0" promptText="Edad" />
             <Text layoutX="113.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Empleados">
                <font>
                   <Font size="32.0" />
                </font>
             </Text>
-            <JFXButton buttonType="RAISED" layoutX="313.0" layoutY="412.0" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Limpiar" />
-            <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="412.0" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="ver Tabla" />
+            <JFXButton buttonType="RAISED" layoutX="313.0" layoutY="412.0" onAction="#limpiarCampos" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Limpiar" />
+            <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="412.0" onAction="#verTablaEmpleados" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="ver Tabla" />
          </children>
       </AnchorPane>
    </center>
