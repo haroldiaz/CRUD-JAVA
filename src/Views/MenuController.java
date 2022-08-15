@@ -52,13 +52,13 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+       obsLista.clear();
        bd.conectar();
-       agregarSexoComobox();
-       
        tablaEmpleados.setEditable(true);
-         
-        llenarColomn();
-        agregarEmpleados();
+       
+       agregarSexoComobox();
+       llenarColomn();
+       agregarEmpleados();
     }
     
     void llenarColomn()
@@ -111,9 +111,12 @@ public class MenuController implements Initializable {
         int edad =  Integer.parseInt(edad_text.getText());
       
         Empleado nuevo = new Empleado(nombre, Apellido, correo, sexo, edad);
-       
-        if(bd.INSERT_EMPLEADO(nuevo)) 
+        obsLista.add(nuevo);
+        
+        
+        if(!bd.INSERT_EMPLEADO(nuevo)) 
         {
+            
             mensaje("EXITO", "SE REGISTRO EL EMPLEADO CON EXITO", Alert.AlertType.CONFIRMATION);
         }
         

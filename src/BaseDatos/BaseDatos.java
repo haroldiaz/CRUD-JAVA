@@ -93,7 +93,7 @@ public class BaseDatos {
                                         nuevo.getSexo()+"','"+
                                         nuevo.getEdad()
                                         +"')";
-        System.out.println(EJECUTE_QUERY(sql));
+        
         return EJECUTE_QUERY(sql);
         
     }
