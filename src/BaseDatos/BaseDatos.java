@@ -93,6 +93,7 @@ public class BaseDatos {
                                         nuevo.getSexo()+"','"+
                                         nuevo.getEdad()
                                         +"')";
+        System.out.println(EJECUTE_QUERY(sql));
         return EJECUTE_QUERY(sql);
         
     }
@@ -106,18 +107,18 @@ public class BaseDatos {
          
            
             System.out.println("--SE EJECUTO- CORRECTAMENTE-");
-            return  true;
+            
             
 
         } catch (SQLException e)
         {
             System.out.println("ERROR EJECUTE_QUERY -> " + e);
-            return  false;
+           
+            return  true;
             
         }
         
-        
-        
+        return false;
     }
 
 }

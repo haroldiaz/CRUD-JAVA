@@ -3,28 +3,41 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.MenuController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="nombre_text" layoutX="118.0" layoutY="176.0" prefHeight="35.0" prefWidth="167.0" promptText="Nombre" />
-            <JFXButton buttonType="RAISED" layoutX="113.0" layoutY="412.0" onAction="#registrarEmpleado" prefHeight="38.0" prefWidth="177.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Registrar" />
-            <JFXTextField fx:id="apellido_text" layoutX="118.0" layoutY="230.0" prefHeight="35.0" prefWidth="167.0" promptText="Apellido" />
-            <JFXTextField fx:id="correo_text" layoutX="118.0" layoutY="284.0" prefHeight="35.0" prefWidth="167.0" promptText="Correo" />
-            <JFXComboBox fx:id="combo_sexo" layoutX="359.0" layoutY="181.0" prefHeight="30.0" prefWidth="170.0" promptText="Sexo" />
-            <JFXTextField fx:id="edad_text" layoutX="359.0" layoutY="230.0" prefHeight="35.0" prefWidth="170.0" promptText="Edad" />
-            <Text layoutX="113.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Empleados">
+            <JFXTextField fx:id="nombre_text" layoutX="155.0" layoutY="208.0" prefHeight="35.0" prefWidth="168.0" promptText="Nombre" />
+            <JFXButton buttonType="RAISED" layoutX="143.0" layoutY="625.0" onAction="#registrarEmpleado" prefHeight="38.0" prefWidth="177.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Registrar" />
+            <JFXTextField fx:id="apellido_text" layoutX="155.0" layoutY="262.0" prefHeight="35.0" prefWidth="168.0" promptText="Apellido" />
+            <JFXTextField fx:id="correo_text" layoutX="155.0" layoutY="316.0" prefHeight="35.0" prefWidth="168.0" promptText="Correo" />
+            <JFXComboBox fx:id="combo_sexo" layoutX="155.0" layoutY="379.0" prefHeight="30.0" prefWidth="168.0" promptText="Sexo" />
+            <JFXTextField fx:id="edad_text" layoutX="155.0" layoutY="436.0" prefHeight="35.0" prefWidth="168.0" promptText="Edad" />
+            <Text layoutX="152.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Empleados" AnchorPane.topAnchor="78.8359375">
                <font>
-                  <Font size="32.0" />
+                  <Font size="40.0" />
                </font>
             </Text>
-            <JFXButton buttonType="RAISED" layoutX="313.0" layoutY="412.0" onAction="#limpiarCampos" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Limpiar" />
-            <JFXButton buttonType="RAISED" layoutX="408.0" layoutY="412.0" onAction="#verTablaEmpleados" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="ver Tabla" />
+            <JFXButton buttonType="RAISED" layoutX="352.0" layoutY="625.0" onAction="#limpiarCampos" prefHeight="38.0" prefWidth="72.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Limpiar" />
+            <TableView fx:id="tablaEmpleados" layoutX="441.0" layoutY="207.0" prefHeight="345.0" prefWidth="547.0" AnchorPane.rightAnchor="92.0">
+              <columns>
+                <TableColumn fx:id="c_nombre" prefWidth="75.0" text="Nombre " />
+                <TableColumn fx:id="c_apellido" prefWidth="75.0" text="Apellido" />
+                  <TableColumn fx:id="c_correo" prefWidth="75.0" text="Correo" />
+                  <TableColumn fx:id="c_sexo" prefWidth="75.0" text="Sexo" />
+                  <TableColumn fx:id="c_edad" prefWidth="75.0" text="Edad" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
          </children>
       </AnchorPane>
    </center>

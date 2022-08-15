@@ -7,10 +7,16 @@ import Principal.Main;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class MenuController implements Initializable {
@@ -28,13 +34,61 @@ public class MenuController implements Initializable {
     private JFXTextField edad_text;
     
     BaseDatos bd = new BaseDatos();
+    @FXML
+    private TableView<Empleado> tablaEmpleados;
+    @FXML
+    private TableColumn c_nombre;
+    @FXML
+    private TableColumn c_apellido;
+    @FXML
+    private TableColumn c_correo;
+    @FXML
+    private TableColumn c_sexo;
+    @FXML
+    private TableColumn c_edad;
+    
+    ObservableList<Empleado> obsLista = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
        bd.conectar();
        agregarSexoComobox();
-    }    
+       
+       tablaEmpleados.setEditable(true);
+         
+        llenarColomn();
+        agregarEmpleados();
+    }
+    
+    void llenarColomn()
+    {
+       
+        c_nombre.setCellValueFactory(new PropertyValueFactory<Empleado, String>("nombre")); 
+        c_apellido.setCellValueFactory(new PropertyValueFactory<Empleado, String>("apellido")); 
+        c_correo.setCellValueFactory(new PropertyValueFactory<Empleado, String>("correo")); 
+        c_sexo.setCellValueFactory(new PropertyValueFactory<Empleado, String>("sexo")); 
+        c_edad.setCellValueFactory(new PropertyValueFactory<Empleado, Integer>("edad")); 
+        
+        tablaEmpleados.setItems(obsLista);
+    
+    
+    }
+    void agregarEmpleados()
+    {
+        List<Empleado> lista = bd.SELECT_EMPLEADO();
+
+        if (!lista.isEmpty()) {
+            
+                for (int i = 0; i < lista.size(); i++) 
+                {
+                    obsLista.add(lista.get(i));
+                }
+        }
+
+
+    }
+             
     public void setVentanaPrincipal(Main main)
     {
         this.ventana = main;
@@ -64,13 +118,7 @@ public class MenuController implements Initializable {
         }
         
     }
-    
-    @FXML
-    void verTablaEmpleados()
-    {
-        this.ventana.tablaEmpleados();
-    }
-    
+
     @FXML
     void limpiarCampos()
     {
