@@ -98,6 +98,14 @@ public class BaseDatos {
         
     }
    
+    
+    public boolean DELETE_EMPLEADO(int id)
+    {
+        String sql ="DELETE FROM EMPLEADO  WHERE ID_EMPLEADO = "+ id + ";";
+        return EJECUTE_QUERY(sql);
+    }
+    
+    
     boolean EJECUTE_QUERY(String query) 
     {
         try 

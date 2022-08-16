@@ -8,15 +8,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 
 
 public class MenuController implements Initializable {
@@ -131,6 +134,70 @@ public class MenuController implements Initializable {
         edad_text.setText("");
     }  
         
+    
+    @FXML
+    void verDatosEmpleado()
+    {
+        if (!tablaEmpleados.getSelectionModel().isEmpty())
+        {
+            String nombre = tablaEmpleados.getSelectionModel().getSelectedItems().get(0).getNombre();
+            nombre_text.setText(nombre);
+           
+            
+            String apellido = tablaEmpleados.getSelectionModel().getSelectedItems().get(0).getApellido();
+            apellido_text.setText(apellido);
+            
+            String correo =  tablaEmpleados.getSelectionModel().getSelectedItems().get(0).getCorreo();
+            correo_text.setText(correo);
+            
+            String sexo = tablaEmpleados.getSelectionModel().getSelectedItems().get(0).getSexo();
+            combo_sexo.setValue(sexo);
+            
+            String edad = tablaEmpleados.getSelectionModel().getSelectedItems().get(0).getEdad() + "";
+            edad_text.setText(edad);
+        }
+                
+    }
+    
+    @FXML
+    public void DELETE()
+    {
+       
+        if (!tablaEmpleados.getSelectionModel().isEmpty()) 
+        {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("ELIMINAR EMPLEADO");
+
+            alert.setTitle("Eliminar Empleado");
+            alert.setContentText("¿Deseas realmente Eliminar el Empleado?");
+            
+            Optional<ButtonType> action = alert.showAndWait();
+        
+            if (action.get() == ButtonType.OK) 
+            {  
+            
+            
+            int codigo =(int) tablaEmpleados.getSelectionModel().getSelectedItem().getId_empleado();
+            System.out.println(codigo);
+                if(bd.DELETE_EMPLEADO(codigo))
+                {
+                    obsLista.remove(tablaEmpleados.getSelectionModel().getSelectedItem());
+                    mensaje("EXITO", "SE ELIMINO EL EMPLEADO",Alert.AlertType.CONFIRMATION);
+                }
+            
+            
+            }
+        }
+        else
+        {
+            mensaje("ERROR", "NO SELECCIONO NINGUNA NOTA",Alert.AlertType.CONFIRMATION);
+        }
+        
+    
+    }
+    
+    
+    
     
     void mensaje(String titulo, String info,Alert.AlertType tipo) 
     {
