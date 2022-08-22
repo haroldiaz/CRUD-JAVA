@@ -159,6 +159,49 @@ public class MenuController implements Initializable {
                 
     }
     
+    
+    @FXML 
+    public void UPDATE()
+    {
+        if (!tablaEmpleados.getSelectionModel().isEmpty()) 
+        {
+            int id_empleado =(int) tablaEmpleados.getSelectionModel().getSelectedItem().getId_empleado(); 
+            String nombre = nombre_text.getText();
+            String apellido = apellido_text.getText();
+            String correo = correo_text.getText();
+            String sexo = combo_sexo.getValue();
+            int edad = Integer.parseInt(edad_text.getText());
+            
+            obsLista.set(tablaEmpleados.getSelectionModel().getSelectedIndex(), 
+                    new Empleado(id_empleado,nombre,apellido,correo,sexo,edad));  
+            
+            String SET   = "NOMBRE = " +"'"+ nombre+"'," + "\n" 
+                          +"APELLIDO = " +"'"+ apellido+"',"+ "\n" 
+                          +"CORREO = " +"'"+ correo+"',"+ "\n" 
+                          +"SEXO = " +"'"+ sexo+"',"+ "\n" 
+                          +"EDAD = " +"'"+ edad+"'"+ "\n" 
+                          ;
+
+            
+                String id = "id_empleado = " + id_empleado;
+                String query = "UPDATE " +"EMPLEADO"+" SET "+ SET +" WHERE "+ id;
+                mostrarQUERY(SET, query, id);
+               
+                
+                if (bd.UPDATE_EMPLEADO(query)) 
+                {
+                    mensaje("ERROR","ACTUALIZACION CORRECTA", Alert.AlertType.CONFIRMATION);
+                }
+            else{
+        
+                mensaje("ERROR","NO SELECCIONO NINGUNA MATRICULA",Alert.AlertType.ERROR);
+            }
+        
+        }
+        
+    }
+    
+    
     @FXML
     public void DELETE()
     {
@@ -196,7 +239,12 @@ public class MenuController implements Initializable {
     
     }
     
-    
+    void mostrarQUERY(String set,String query,String id)
+    {
+        System.out.println("UPDATE  EMPLEADO" + "\n" +
+                            "SET  " + set +
+                            "WHERE " + id );
+    }
     
     
     void mensaje(String titulo, String info,Alert.AlertType tipo) 

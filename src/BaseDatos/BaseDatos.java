@@ -105,6 +105,10 @@ public class BaseDatos {
         return EJECUTE_QUERY(sql);
     }
     
+    public boolean UPDATE_EMPLEADO(String query)
+    {
+        return EJECUTE_QUERY(query);
+    }
     
     boolean EJECUTE_QUERY(String query) 
     {

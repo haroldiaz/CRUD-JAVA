@@ -38,11 +38,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="625.0" onAction="#DELETE" prefHeight="38.0" prefWidth="110.0" ripplerFill="#ee5959" style="-fx-background-color: red;" text="Eliminar" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="641.0" layoutY="625.0" onAction="#DELETE" prefHeight="38.0" prefWidth="110.0" ripplerFill="#ee5959" style="-fx-background-color: red;" text="Eliminar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="480.0" layoutY="625.0" onAction="#UPDATE" prefHeight="38.0" prefWidth="121.0" ripplerFill="#ee5959" style="-fx-background-color: white;" text="Actualizar" />
          </children>
       </AnchorPane>
    </center>
